@@ -10,7 +10,6 @@ public class Evento {
 	private int postiPrenotati;
 	
 	public Evento(String titolo, LocalDate data, int postiTotali, int postiPrenotati) {
-		super();
 		validPosti(postiTotali);
 		validData(data);
 		this.titolo = titolo;
@@ -82,7 +81,6 @@ public class Evento {
 				+ postiPrenotati + "]";
 	}
 
-	
    
 
 	
