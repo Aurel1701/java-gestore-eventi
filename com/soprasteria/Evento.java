@@ -9,7 +9,7 @@ public class Evento {
 	private int postiTotali;
 	private int postiPrenotati;
 	
-	public Evento(String titolo, LocalDate data, int postiTotali, int postiPrenotati) {
+	public Evento(String titolo, LocalDate data, int postiTotali) {
 		validPosti(postiTotali);
 		validData(data);
 		this.titolo = titolo;
@@ -31,6 +31,7 @@ public class Evento {
 	}
 
 	public void setData(LocalDate data) {
+		validData(data);
 		this.data = data;
 	}
 
@@ -57,13 +58,14 @@ public class Evento {
             throw new IllegalArgumentException("Ci deve essere almeno un posto");
     }
 	
-	public void prenota() throws Exception {
+	public void prenota(int prenotati) throws Exception {
         if (LocalDate.now().isAfter(data)) {
             throw new Exception("Impossibile prenotare eventi già passati");
         } else if (postiTotali == postiPrenotati) {
             throw new Exception("L'evento è al completo");
         } else
-            postiPrenotati++;
+           this.postiPrenotati = this.postiPrenotati + prenotati;
+        
     }
 	
     public void disdici() throws Exception {
